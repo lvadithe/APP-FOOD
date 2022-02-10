@@ -1,0 +1,25 @@
+.container{
+    background-color: transparent;
+    max-width: 500px;
+    margin: 25px auto 0;
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    box-shadow: 5px 10px 18px #999191;
+}
+
+.card{
+   display: grid;
+   flex-direction: column;
+}
+
+.title{
+    font-size: 25px;
+    line-height: 40px;
+    margin: 10px 0;
+    
+}
+
+.diet{
+    column-count: 2;
+}
