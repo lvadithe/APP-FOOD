@@ -14,13 +14,14 @@ const allApiData = async () => {
             name: e.title,
             image: e.image,
             score: e.spoonacularScore,
-            dishTypes: e.dishTypes.map((d) => { return { name: d } }),    //es un arreglo, utilizo e map para que me devuelva todos
-            diets: e.diets.map((d) => { return { name: d } }),
+            dishTypes: e.dishTypes.map((e) => { return { name: e } }),    //es un arreglo, utilizo e map para que me devuelva todos
+            diets: e.diets.map((e) => { return { name: e } }),
             summary: e.summary,
             healthScore: e.healthScore,
-            steps: e.analyzedInstructions
+            steps: e.analyzedInstructions[0]?.steps.map(e => {
+                return `<ul> <li>${e.number} - ${e.step}</li> </ul>`
+            })
         }
-
     })
 
     return aInfo
@@ -29,17 +30,18 @@ const allApiData = async () => {
 const allDbData = async () => {
 
     return await Recipe.findAll({
-        include: {              //  eager loading on a model with a Belongs-to-Many relationship
-            model: Diet,        //  join con la tabla Diet
-            attibutes: ['name'],//  con el atributo 'name' de dicha tabla
+
+        include: {              
+            model: Diet,        
+            attributes: ['name'],
             through: {
-                attibutes: [],   //  trae los atributos indicados, si no me trae todos
+                attributes: []   
             }
-        } // sin hacer esta comprobacion los trae igual, pero la idea es hacerla para traer solo ese atributo
+        }
+
     })
 
-}; // more at: https://sequelize.org/master/manual/eager-loading.html#eager-loading-with-many-to-many-relationships
-
+}; 
 
 const allData = async () => {
 
@@ -48,11 +50,14 @@ const allData = async () => {
     const allDataContainer = apiData.concat(dbData);
 
     return allDataContainer
+
 };
 
 
 module.exports = {
+
     allData,
     allDbData,
     allApiData
+    
 };

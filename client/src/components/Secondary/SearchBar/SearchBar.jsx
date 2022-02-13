@@ -16,19 +16,20 @@ export default function SearchBar() {
         e.preventDefault()
         dispatch(getNameRecipes(name)) //el estado
         setName('')
-
+        
     }
 
     return (
-        <div>
+        <div >
             <input
-                value={name}
+                value = {name}
                 type='text'
                 placeholder="Recipe..."
                 onChange={(e) => handleInputChange(e)}
             />
-            <button
+            <button 
                 type='submit' onClick={(e) => handleSubmit(e)} >Search</button>
+
         </div>
-    );
+    )
 }

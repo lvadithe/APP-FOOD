@@ -9,13 +9,10 @@ const router = Router();
 
 const recipesRouter = require('./recipes');
 const recipeRouter = require('./recipe');
-const typesRouter = require('./types')
+const typesRouter = require('./types');
 
 router.use('/recipes', recipesRouter);
 router.use('/recipe', recipeRouter);
 router.use('/types', typesRouter);
-
-/* res.status(200).send(newRecipe) */  
-// RECORDAR CAMBIAR EL FORCE A TRUE ANTE CAMBIOS EN LA BDD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 
 module.exports = router;

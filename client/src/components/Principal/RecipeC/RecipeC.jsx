@@ -18,8 +18,8 @@ function validate(post) {
     if (!post.healthScore || post.healthScore < 0 || post.healthScore > 100) {
         errors.healthScore = 'Ingresa un valor de 0 a 100'
     }
-    if (!post.stepByStep.length) {
-        errors.stepByStep = 'Escribe una serie de pasos sobre cómo cocinar la receta'
+    if (!post.steps.length) {
+        errors.steps = 'Escribe una serie de pasos sobre cómo cocinar la receta'
     }
     if (!post.image) {
         errors.image = 'Ingresar URL de alguna imagen representativa'
@@ -43,10 +43,10 @@ export default function RecipeCreate() {
     const [post, setPost] = useState({
         name: '',
         summary: '',
-        score: 0,
-        healthScore: 0,
+        score: '',
+        healthScore: '',
         image: '',
-        stepByStep: [],
+        steps: [],
         diets: []
     })
     function handleInputChange(e) {
@@ -84,11 +84,11 @@ export default function RecipeCreate() {
     function handleSteps(e) {
         setPost({
             ...post,
-            stepByStep: [e.target.value]
+            steps: [e.target.value]
         });
         setErrors(validate({
             ...post,
-            stepByStep: e.target.value
+            steps: e.target.value
         }));
     }
 
@@ -148,9 +148,9 @@ export default function RecipeCreate() {
                         </div>
                         <div>
                             <label>Paso a Paso</label>
-                            <textarea value={post.stepByStep} name='stepByStep' onChange={e => handleSteps(e)} />
-                            {errors.stepByStep && (
-                                <p>{errors.stepByStep}</p>
+                            <textarea value={post.steps} name='steps' onChange={e => handleSteps(e)} />
+                            {errors.steps && (
+                                <p>{errors.steps}</p>
                             )}
                         </div>
                         <div>

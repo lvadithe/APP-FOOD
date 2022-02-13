@@ -1,34 +1,49 @@
-const model = require('../apiInfo/allData')
+const data = require('../apiInfo/allData')
 
 const get = async (req, res) => {
+
     try {
-        const { name } = req.query // ESTE REQ BUSCA SI HAY POR NAME LA BUSQUEDA
-        let recipesAll = await model.allData();
-        //ACA COMPARAMOS LA BUSQUEDA CON EL NAME
+
+        const { name } = req.query;
+        const recipesAll = await data.allData();
+
         if (name) {
-            let recipesName = await recipesAll.filter(p => p.name.toLowerCase().includes(name.toLowerCase()))
-             //tolower case hace que la busqueda en minus o mayusc no afecte al resultado de la busqueda
-            recipesName.length ? // sirve para preguntar si trajo algo la busqueda
+
+            let recipesName = await recipesAll.filter(
+                e => e.name.toLowerCase().includes(name.toLowerCase()));
+
+            recipesName.length ?
                 res.status(200).send(recipesName) :
-                res.status(400).send('No existe la Receta que Busca.');
+                res.status(400).send('There is no recipe you are looking for.');
+
         } else {
             res.status(200).send(recipesAll)
         }
+
     } catch {
         return res.status(400).send('invalid input');
     }
+
 };
 
-
 const recipeId = async (req, res) => {
-    const id = req.params.id;
-    const recipes = await model.allData()
-    if (id) {
-        let recipeId = await recipes.filter(p => p.id == id)
-        recipeId.length ?
-            res.status(200).send(recipeId) :
-            res.status(404).send('no se encontro la Receta Buscada')
+
+    try {
+
+        const { id } = req.params;
+        const recipeIds = await data.allData()
+
+        if (id) {
+            let recipeID = await recipeIds.filter(e => e.id == id)
+            recipeID.length ?
+                res.status(200).send(recipeID) :
+                res.status(404).send('No Recipe Found.')
+        }
+
+    } catch {
+        return res.status(400).send('invalid input');
     }
+
 };
 
 

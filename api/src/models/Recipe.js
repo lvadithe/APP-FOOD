@@ -32,12 +32,12 @@ module.exports = (sequelize) => {
         max: 100
       }
     },
-    image: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     steps: {
       type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false
+    },
+    image: {
+      type: DataTypes.STRING,
       allowNull: false
     },
     createdInDb: {

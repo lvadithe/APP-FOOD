@@ -31,7 +31,7 @@ export function filterRecipesByDiet(payload) {
 }
 
 export function postRecipe(payload) {
-  return async function (dispatch) {
+  return async function () {
     const data = await axios.post("http://localhost:3001/recipe", payload)  //post del payload
     return data
   }
@@ -54,26 +54,17 @@ export function filterByScore(payload) {
 
 
 export function getNameRecipes(name) { //por busqueda -> query
-  return async function (dispatch) {
-    try {
 
-      var json = await axios.get(`http://localhost:3001/recipes?name=${name}`)
-      //console.log(json.data)
-      return dispatch({
-        type: 'GET_NAME_RECIPES',
-        payload: json.data,
-      })
-    } catch (error) {
-      return error
-    }
+  return async function (dispatch) {
+    let json = await axios.get(`http://localhost:3001/recipes?name=${name}`);
+    return dispatch({ type: 'GET_NAME_RECIPES', payload: json.data })
   }
 }
 
 export function getRecipeDetail(id) {
   return async function (dispatch) {
-    axios.get(`http://localhost:3001/recipes/${id}`)
-      .then(res => dispatch({type: 'GET_DETAIL', payload: res.data}))
-      .catch(err => console.error(err))
+    let json = await axios.get(`http://localhost:3001/recipes/${id}`)
+    return dispatch({ type: 'GET_DETAIL', payload: json.data })
   }
 }
 

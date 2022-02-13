@@ -1,27 +1,41 @@
 const { Diet } = require('../db')
+const axios = require('axios');
 
-const types = async (req, res, next) => {
-    const diets = [
-        "gluten free",
-        "dairy free",
-        "paleolithic",
-        "ketogenic",
-        "lacto ovo vegetarian",
-        "vegan",
-        "pescatarian",
-        "primal",
-        "fodmap friendly",
-        "whole 30",
-    ]
+const { API_KEY } = process.env;
+require('dotenv').config();
 
-    diets.forEach(el => {
-        Diet.findOrCreate({
-            where: { name: el }  //por cada tipo de dieta
-        })
-    })
+const types = async (req, res) => {
 
-    const allTypes = await Diet.findAll()
-    res.send(allTypes)
+    try {
+
+        const allData = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=30&addRecipeInformation=true`);
+        const allInfo = allData.data.results.map(e => e.diets)
+
+        const diets = allInfo.join(",").split(",");
+        /* const cont = []; */
+
+        for (let i = 0; i < diets.length; i++) {
+            await Diet.findOrCreate({
+                where: {
+                    name: diets[i]
+                }
+            })
+        };
+
+        const dietsTypes = await Diet.findAll();
+
+        /* dietsTypes.forEach(el => {
+            if (el.name.length !== 0) {
+                cont.push(el)
+            }
+        }); */
+
+        res.status(200).send(dietsTypes);
+    
+    } catch {
+        return res.status(400).send('Invalid input.')
+    };
+
 };
 
 module.exports = {
