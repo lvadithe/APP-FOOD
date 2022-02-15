@@ -12,7 +12,6 @@ const types = async (req, res) => {
         const allInfo = allData.data.results.map(e => e.diets)
 
         const diets = allInfo.join(",").split(",");
-        /* const cont = []; */
 
         for (let i = 0; i < diets.length; i++) {
             await Diet.findOrCreate({
@@ -23,12 +22,6 @@ const types = async (req, res) => {
         };
 
         const dietsTypes = await Diet.findAll();
-
-        /* dietsTypes.forEach(el => {
-            if (el.name.length !== 0) {
-                cont.push(el)
-            }
-        }); */
 
         res.status(200).send(dietsTypes);
     

@@ -1,7 +1,9 @@
 .component{
     position: relative;
     height: 100%;
-    background: url('../../../assets/video/backgroundL.mp4');
+    background: url('../../../assets/image/landingP.jpg') 
+    center no-repeat;
+    background-size: cover;
 }
 
 .gradient{
@@ -17,30 +19,41 @@
     );
 }
 
-.logo{
-    position: fixed;
-    left: 0;
-    width: 150px;
-    object-fit: contain;
-    padding-left: 20px;
+.b_conteiner > h1{
+    font-size: 3.125rem;
+    margin-bottom: 20px;
+}
+
+.b_conteiner > h2{
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.b_conteiner > h3{
+    font-size: 1.3rem;
+    font-weight: 400;
 }
 
 .b_conteiner{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -25px 0 0 -25px;
+    top: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    z-index: 1;
     color: #fff;
+    padding: 20px;
 }
 
 .button{
-    padding: 36px 40px;
+    padding: 16px 20px;
     font-size: 1rem;
     color: #fff;
-    background-color: darkgoldenrod;
+    background-color: rgb(122, 101, 47);
     border: none;
-    font-weight: 600;
+    font-weight: 400;
     cursor: pointer;
-    
+    margin: 20px;   
 }
 

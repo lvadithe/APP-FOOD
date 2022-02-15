@@ -1,13 +1,9 @@
-import { GET_CLEAN } from "../actions"
-
 const initialState = {
   recipes: [],
   allRecipes: [],
   detail: [],
   diets: []
-
 }
-
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -34,7 +30,7 @@ function rootReducer(state = initialState, action) {
         ...state,   //post no necesita-> crea en otra ruta
       }
 
-    case 'FILTER_BY_DIET':
+    /* case 'FILTER_BY_DIET':
       const allRecipes = state.allRecipes //copia del estado
       const dietsFilter = action.payload === "All" ? state.allRecipes :
         allRecipes.filter(recipe => recipe.diets.find(diet => {
@@ -46,29 +42,30 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         recipes: dietsFilter
+      } */
+
+    case 'FILTER_BY_DIET':
+      const allRecipes = state.allRecipes //copia del estado
+      const dietsFilter = action.payload === "All" ? allRecipes :
+        allRecipes.filter(recipe => {
+          let names = recipe.diets.map(d => d.name)
+          if (names.includes(action.payload)) return recipe
+        })
+      return {
+        ...state,
+        recipes: dietsFilter
       }
-
-
 
     case 'FILTER_BY_NAME':
       let orderName = action.payload === "asc" ?
         state.recipes.sort(function (a, b) {     //sort-> compara y ordena izq o der d
-          if (a.name > b.name) {
-            return 1
-          }
-          if (b.name > a.name) {
-            return -1
-          }
+          if (a.name > b.name) return 1
+          if (b.name > a.name) return -1
           return 0   //si son iguales
-
         }) :
         state.recipes.sort(function (a, b) {
-          if (a.name > b.name) {
-            return -1
-          }
-          if (b.name > a.name) {
-            return 1
-          }
+          if (a.name > b.name) return -1
+          if (b.name > a.name) return 1
           return 0
         })
       return {
@@ -101,7 +98,7 @@ function rootReducer(state = initialState, action) {
         detail: action.payload
       }
 
-    case GET_CLEAN:
+    case 'GET_CLEAN':
       return {
         ...state,
         datail: []

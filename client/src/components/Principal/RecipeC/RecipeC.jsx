@@ -154,8 +154,7 @@ export default function RecipeCreate() {
                             )}
                         </div>
                         <div>
-                            <select onChange={e => handleSelectDiets(e)} defaultValue='default'
-                            >
+                            <select onChange={e => handleSelectDiets(e)} defaultValue='default'>
                                 <option value="default" disabled >Elegir dietas</option>
                                 {
                                     diets && diets.map(d => (

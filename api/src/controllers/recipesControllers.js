@@ -34,14 +34,14 @@ const recipeId = async (req, res) => {
         const recipeIds = await data.allData()
 
         if (id) {
-            let recipeID = await recipeIds.filter(e => e.id == id)
+            const recipeID = await recipeIds.filter(e => e.id == id)
             recipeID.length ?
                 res.status(200).send(recipeID) :
                 res.status(404).send('No Recipe Found.')
         }
 
     } catch {
-        return res.status(400).send('invalid input');
+        return res.status(400).send('Invalid input');
     }
 
 };
