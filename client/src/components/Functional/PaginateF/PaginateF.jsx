@@ -9,7 +9,7 @@ export default function Paginado({ recipesPerPage, allRecipes, paginado }) {
 
     useEffect(() => {
         window.scrollTo(0, 0)
-    }, [pageNumers])
+    })
 
     return (
         <nav>

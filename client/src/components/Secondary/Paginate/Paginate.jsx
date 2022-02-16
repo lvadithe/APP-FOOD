@@ -11,7 +11,7 @@ export default function PaginateF() {
     const dispatch = useDispatch()
 
     const [currentPage, setCurrentPage] = useState(1) // lo seteo en 1 porque siempre arranco en la primer pagina
-    const [recipesPerPage, setRecipesPerPage] = useState(9)  //cuantas recetas quiero por pagina, por estado local
+    const [recipesPerPage] = useState(9)  //cuantas recetas quiero por pagina, por estado local
     const iOfLastRecipe = currentPage * recipesPerPage      //pagina actual por cantidad de recetas por pag(indice del ultimo rec que tengo por pag)
     const iOfFirstRecipe = iOfLastRecipe - recipesPerPage
     const currentRecipes = allRecipes.slice(iOfFirstRecipe, iOfLastRecipe)

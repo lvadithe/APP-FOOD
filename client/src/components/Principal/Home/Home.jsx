@@ -1,10 +1,9 @@
 import React from "react";
 import PaginateF from "../../Secondary/Paginate/Paginate";
 import { useEffect, useState } from "react";
-import { filterRecipesByDiet, getRecipes/* , getDiets */, filterByName, filterByScore } from "../../../redux/actions"
-import { useDispatch, useSelector } from 'react-redux'
+import { filterRecipesByDiet, getRecipes, filterByName, filterByScore } from "../../../redux/actions"
+import { useDispatch } from 'react-redux'
 import SearchBar from "../../Secondary/SearchBar/SearchBar";
-import { Link } from "react-router-dom";
 import s from './StylesH.module.css';
 import OrderF from "../../Functional/OrderF/OrderF";
 
@@ -16,13 +15,6 @@ export default function Home() {
     useEffect(() => {
         dispatch(getRecipes())
     }, [dispatch])
-
-
-
-    function handleClick(e) {    //le paso el evento..
-        e.preventDefault()
-        dispatch(getRecipes())   //resetea las recipes
-    }
 
     function handleOrderByName(e) {
         dispatch(filterByName(e.target.value))
@@ -40,23 +32,16 @@ export default function Home() {
     };
 
     return (
-        <div className={s.container}>
+        <div className={s.comp} >
 
-            <Link to="/recipe">CREATE RECIPE</Link>
-            
-            <div>
+            <div className={s.container}>
+
                 <SearchBar />
-
                 <OrderF
                     handleOrderByName={handleOrderByName}
                     handleOrderByScore={handleOrderByScore}
                     handleFilterByDiets={handleFilterByDiets}
                 />
-
-                <button
-                    onClick={e => { handleClick(e) }}>
-                    BACK TO ALL RECIPES
-                </button>
 
             </div>
 

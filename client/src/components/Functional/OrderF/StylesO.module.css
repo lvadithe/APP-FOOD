@@ -1,0 +1,40 @@
+.container{
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 7;
+}
+.filters{
+    background: transparent;
+    margin: 5px 5px;
+    padding: 5px 5px;
+    font-size: large;
+    color: #5f5e99;
+    border: 1px solid #5f5e99;
+    border-radius: 5px;
+}
+
+.button{
+    padding: 5px;
+    margin: 5px;
+    width: 200px;
+    /* font-size: large; */
+    border-radius: 5px;
+    border: 2px solid #e4dea6;
+    background-color: transparent;
+    color: #e7d999;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.button:hover{
+    background-color: #fd684d;
+    color: white;
+    border: 2px solid #fd684d
+}
+
+option{
+    color: black;
+}

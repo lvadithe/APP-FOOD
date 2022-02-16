@@ -31,8 +31,7 @@ export default function Detail() {
             <div >
                 {myRecipe.length > 0 ?
                     <div>
-                        <h1
-                        >{myRecipe[0].name && myRecipe[0].name}</h1>
+                        <h1>{myRecipe[0].name}</h1>
                         <img
                             src={myRecipe[0].image ? myRecipe[0].image : 'https://images.unsplash.com/photo-1542010589005-d1eacc3918f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1492&q=80'} alt="no se encontro la imagen" />
                         <div>
@@ -52,7 +51,8 @@ export default function Detail() {
                         </div>
                         <div>
                             <h5 >Steps:</h5>
-                            <p  dangerouslySetInnerHTML={{ __html: myRecipe[0].steps }}></p>
+                            {/* <p dangerouslySetInnerHTML={{ __html: myRecipe[0].steps }}></p> */}
+                            <ul><li>{myRecipe[0].steps}</li></ul>
                         </div>
                     </div> : <p>LOADING...</p>
                 }

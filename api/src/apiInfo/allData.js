@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const allApiData = async () => {
 
-    const aUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=30&addRecipeInformation=true`);
+    const aUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=15&addRecipeInformation=true`);
     const aInfo = await aUrl.data.results.map(e => {
 
         return {
@@ -19,7 +19,7 @@ const allApiData = async () => {
             summary: e.summary,
             healthScore: e.healthScore,
             steps: e.analyzedInstructions[0]?.steps.map(e => {
-                return `<ul> <li>${e.number} - ${e.step}</li> </ul>`
+                return `${e.number} - ${e.step}`
             })
         }
     })

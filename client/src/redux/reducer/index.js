@@ -50,6 +50,7 @@ function rootReducer(state = initialState, action) {
         allRecipes.filter(recipe => {
           let names = recipe.diets.map(d => d.name)
           if (names.includes(action.payload)) return recipe
+          else return null;
         })
       return {
         ...state,
