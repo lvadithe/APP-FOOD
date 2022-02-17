@@ -33,11 +33,12 @@ export default function Home() {
 
     return (
         <div className={s.comp} >
-
+            <div className={s.cardShadow}></div>
             <div className={s.container}>
 
                 <SearchBar />
                 <OrderF
+
                     handleOrderByName={handleOrderByName}
                     handleOrderByScore={handleOrderByScore}
                     handleFilterByDiets={handleFilterByDiets}
@@ -46,6 +47,7 @@ export default function Home() {
             </div>
 
             <PaginateF />
+            <div className={s.cardShadow}></div>
         </div>
     )
 }

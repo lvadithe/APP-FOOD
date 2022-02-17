@@ -13,10 +13,11 @@ export default function Card({ name, img, diet, id }) {
                         <h2>{name}</h2>
                     </div>
 
-                    <div>
-                        <img src={img} alt="not found" />
-                    </div>
-
+                </div>
+                <div>
+                    <img src={img} className={s.card_media} alt="not found" />
+                </div>
+                <div className={s.card_body} >
                     <div>
                         <Link to={'/recipe/' + id} className={s.description} >
                             See recipe details</Link>
@@ -37,8 +38,9 @@ export default function Card({ name, img, diet, id }) {
                     </div>
 
                 </div>
+
             </div>
             <div className={s.cardShadow}></div>
-        </div>
+        </div >
     );
 }

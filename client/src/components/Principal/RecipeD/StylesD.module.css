@@ -1,0 +1,101 @@
+.component{
+    height: auto;
+}
+
+.button{
+    padding: 5px;
+    margin: 5px;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid #e4dea6;
+    background-color: transparent;
+    color: #070707;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.button:hover{
+    background-color: #fd684d;
+    color: white;
+    border: 2px solid #fd684d
+}
+
+.title{
+    color: rgb(235, 202, 152);
+    font-family: 'Droid serif', serif; 
+    font-size: 36px; 
+    font-weight: 400; 
+    font-style: italic; 
+    line-height: 44px; 
+    margin: 10px 12px;
+    padding: 10px 12px; 
+    text-align: center;
+}
+
+.imgContainer{
+    float: left;
+    margin: 12px;
+    padding: 50px;
+}
+
+.img{
+    border-radius: 10px;
+}
+
+.detailContainer{
+    margin: 12px;
+    padding: 20px;
+    background-color: rgb(179, 227, 172);
+    border: 3px solid rgb(179, 205, 149);
+    border-radius: 10px;
+    box-shadow: 0 2px 25px 2px rgb(157, 139, 139), 
+    0 2px 50px 2px rgb(203, 191, 191), 
+    0 0 100px 3px rgba(215, 210, 210, 0.25);
+}
+.h3{
+    color: rgb(112, 93, 64);
+    font-family: 'Droid serif', serif; 
+    font-size: 24px; 
+    font-weight: 200; 
+    font-style: italic; 
+    line-height: 44px; 
+    margin: 10px 12px;
+    padding: 10px 12px; 
+}
+
+.p{
+    display: contents;
+    color: #7a7c7f; 
+    font-size: 22px; 
+    font-family: "Libre Baskerville", serif; 
+    line-height: 45px; 
+    text-align: center; 
+    text-shadow: 0 1px 1px #fff; 
+    padding: 20px; 
+}
+
+.li{
+    display: list-item;
+    text-align: left;
+    font-size: 22px;
+    font-family: "Libre Baskerville", serif;
+    list-style-type: disc;
+    list-style-position: inside;
+    text-transform: capitalize;
+}
+
+.loading{
+    padding: 5px;
+    margin: 5px;
+    width: 100px;
+    border-radius: 5px;
+    border: 5px solid #e4dea6;
+    background-color: transparent;
+    color: #070707;
+    transition-duration: 0.4s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+}

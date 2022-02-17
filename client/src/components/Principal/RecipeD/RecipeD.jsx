@@ -3,13 +3,12 @@ import { Link, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getRecipeDetail, getClean } from "../../../redux/actions";
-
-
+import s from './StylesD.module.css';
 
 export default function Detail() {
+
     const dispatch = useDispatch()
     const { id } = useParams()
-
 
     useEffect(() => {
         dispatch(getRecipeDetail(id))  //props.match.params.id
@@ -18,46 +17,51 @@ export default function Detail() {
 
     const myRecipe = useSelector(state => state.detail)
 
-/*     console.log(myRecipe[0].steps); */
-
-
     return (
         <div >
+
             <Link to='/home'>
-                <button
-                >HOME</button>
+                <button className={s.button}>HOME</button>
             </Link>
 
             <div >
                 {myRecipe.length > 0 ?
-                    <div>
-                        <h1>{myRecipe[0].name}</h1>
-                        <img
-                            src={myRecipe[0].image ? myRecipe[0].image : 'https://images.unsplash.com/photo-1542010589005-d1eacc3918f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1492&q=80'} alt="no se encontro la imagen" />
-                        <div>
-                            <h5 >Score:</h5>
-                            <h2>{myRecipe[0].score}</h2>
-                        </div>
-                        <div>
-                            <h3 >Diet types:</h3><ul >{myRecipe[0].diets.map(d => <li >{d.name}</li>)}</ul>
-                        </div>
-                        <div>
-                            <h5 >Summary:</h5>
-                            <h3 > <div dangerouslySetInnerHTML={{ __html: myRecipe[0].summary }} /></h3>
-                        </div>
-                        <div>
-                            <h5 >Health Score:</h5>
-                            <h2>{myRecipe[0].healthScore}</h2>
-                        </div>
-                        <div>
-                            <h5 >Steps:</h5>
-                            {/* <p dangerouslySetInnerHTML={{ __html: myRecipe[0].steps }}></p> */}
-                            <ul><li>{myRecipe[0].steps}</li></ul>
-                        </div>
-                    </div> : <p>LOADING...</p>
-                }
+                    <div className={s.component} >
+                        
+                        <h1 className={s.title}>{myRecipe[0].name}</h1>
 
+                        <div className={s.imgContainer}>
+                            <img src={myRecipe[0].image}  width="500px" height="400px" alt="no se encontro la imagen" />
+                        </div>
+                        <div className={s.detailContainer} >
+
+                            <div>
+                                <h3 className={s.h3}>Score:</h3>
+                                <h2>{myRecipe[0].score}</h2>
+                            </div>
+                            <div>
+                                <h3 className={s.h3}>Diet types:</h3><ul >{myRecipe[0].diets.map(d => <li className={s.li}>{d.name}</li>)}</ul>
+                            </div>
+                            <div>
+                                <h3 className={s.h3}>Summary:</h3>
+                                <p className={s.p} dangerouslySetInnerHTML={{ __html: myRecipe[0].summary }} />
+                            </div>
+                            <div>
+                                <h3 className={s.h3}>Health Score:</h3>
+                                <h2>{myRecipe[0].healthScore}</h2>
+                            </div>
+                            <div>
+                                <h3 className={s.h3}>Steps:</h3>
+                                <ul><li className={s.li}>{myRecipe[0].steps}</li></ul>
+                            </div>
+
+                        </div>
+
+                    </div> : <p className={s.loading}>LOADING...</p>
+                }
+ 
             </div>
+            
         </div>
     )
 }

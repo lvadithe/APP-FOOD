@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import s from './StylesP.module.css';
 
 export default function Paginado({ recipesPerPage, allRecipes, paginado }) {
     const pageNumers = []
@@ -12,16 +13,16 @@ export default function Paginado({ recipesPerPage, allRecipes, paginado }) {
     })
 
     return (
-        <nav>
-            <ul >
+        <div className={s.center}>
+            <ul className={s.pagination} >
                 {pageNumers &&
                     pageNumers.map(number => (  //renderizo los numeros por separado
                         <li key = {number}>
-                            <button  onClick={() => paginado(number)}>{number}</button>
+                            <button className={s.button} onClick={() => paginado(number)}>{number}</button>
                         </li>
                     ))}
             </ul>
-        </nav>
+        </div>
 
     )
 
