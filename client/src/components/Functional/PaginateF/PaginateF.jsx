@@ -15,9 +15,9 @@ export default function Paginado({ recipesPerPage, allRecipes, paginado }) {
     return (
         <div className={s.center}>
             <ul className={s.pagination} >
-                {pageNumers &&
-                    pageNumers.map(number => (  //renderizo los numeros por separado
-                        <li key = {number}>
+                {
+                    pageNumers?.map(number => (  //renderizo los numeros por separado
+                        <li key={number}>
                             <button className={s.button} onClick={() => paginado(number)}>{number}</button>
                         </li>
                     ))}

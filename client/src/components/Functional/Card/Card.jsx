@@ -26,7 +26,7 @@ export default function Card({ name, img, diet, id }) {
                     <div className={s.diet}>
 
                         {
-                            diet.map
+                            diet?.map
                                 (
                                     (d, index) =>
                                         <ul key={index}>

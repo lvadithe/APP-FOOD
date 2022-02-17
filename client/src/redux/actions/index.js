@@ -106,6 +106,16 @@ export function getRecipeDetail(id) {
     ;
 }
 
+/* export function getRecipeDetail(id) {
+
+  return async function (dispatch) {
+    let json = await axios.get(`http://localhost:3001/recipes?${id}`);
+    return dispatch({ type: 'GET_DETAIL', payload: json.data })
+  }
+
+    ;
+}
+ */
 export function getClean() {
 
   return {

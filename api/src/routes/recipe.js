@@ -5,5 +5,4 @@ const router = Router();
 
 router.post('/', post)
 
-
 module.exports = router;

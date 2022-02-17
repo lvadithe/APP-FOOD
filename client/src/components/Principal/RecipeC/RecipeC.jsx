@@ -111,42 +111,42 @@ export default function RecipeCreate() {
                 <form onSubmit={e => handleSubmit(e)}>
                     <h1>Please fill in all the fields</h1>
                     <div>
-                        <label>Nombre</label>
+                        <label>Name</label>
                         <input type="text" value={post.name} name='name' onChange={e => handleInputChange(e)} />
                         {errors.name && (
                             <p>{errors.name}</p>
                         )}
                     </div>
                     <div>
-                        <label>Resumen</label>
+                        <label>Summary</label>
                         <textarea value={post.summary} name='summary' onChange={e => handleInputChange(e)} />
                         {errors.summary && (
                             <p>{errors.summary}</p>
                         )}
                     </div>
                     <div>
-                        <label>Puntaje</label>
+                        <label>Score</label>
                         <input type="number" min="0" max='100' value={post.score} name='score' onChange={e => handleInputChange(e)} />
                         {errors.score && (
                             <p>{errors.score}</p>
                         )}
                     </div>
                     <div>
-                        <label>Nivel Saludable</label>
+                        <label>Healthy Level</label>
                         <input type="number" min="0" max='100' value={post.healthScore} name='healthScore' onChange={e => handleInputChange(e)} />
                         {errors.healthScore && (
                             <p>{errors.healthScore}</p>
                         )}
                     </div>
                     <div>
-                        <label>Imagen</label>
+                        <label>Image</label>
                         <input type="text" value={post.image} name='image' onChange={e => handleInputChange(e)} />
                         {errors.image && (
                             <p>{errors.image}</p>
                         )}
                     </div>
                     <div>
-                        <label>Paso a Paso</label>
+                        <label>Step by Step</label>
                         <textarea value={post.steps} name='steps' onChange={e => handleSteps(e)} />
                         {errors.steps && (
                             <p>{errors.steps}</p>
@@ -155,7 +155,7 @@ export default function RecipeCreate() {
                     <div>
                         <select onChange={e => handleSelectDiets(e)}
                             defaultValue='default' className={s.dietSelect}>
-                            <option value="default" disabled className={s.dietOption} >Elegir dietas</option>
+                            <option value="default" disabled className={s.dietOption} >Choosing diets</option>
                             {
                                 diets && diets.map(d => (
                                     <option value={d.name} key={d.id} >{d.name}</option>

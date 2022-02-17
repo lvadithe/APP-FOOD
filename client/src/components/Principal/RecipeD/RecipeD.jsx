@@ -36,15 +36,15 @@ export default function Detail() {
                         <div className={s.detailContainer} >
 
                             <div>
-                                <h3 className={s.h3}>Score:</h3>
-                                <h2>{myRecipe[0].score}</h2>
-                            </div>
-                            <div>
                                 <h3 className={s.h3}>Diet types:</h3><ul >{myRecipe[0].diets.map(d => <li className={s.li}>{d.name}</li>)}</ul>
                             </div>
                             <div>
                                 <h3 className={s.h3}>Summary:</h3>
                                 <p className={s.p} dangerouslySetInnerHTML={{ __html: myRecipe[0].summary }} />
+                            </div>
+                            <div>
+                                <h3 className={s.h3}>Score:</h3>
+                                <h2>{myRecipe[0].score}</h2>
                             </div>
                             <div>
                                 <h3 className={s.h3}>Health Score:</h3>

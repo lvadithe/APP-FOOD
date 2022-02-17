@@ -1,14 +1,18 @@
 import React from 'react';
-import Card from "../../Functional/Card/Card";
-import Paginate from "../../Functional/PaginateF/PaginateF";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { getRecipes } from "../../../redux/actions"
-import { useDispatch, useSelector } from "react-redux";
+import Card from "../../Functional/Card/Card";
+import PaginateF from "../../Functional/PaginateF/PaginateF";
 
+export default function Paginate() {
 
-export default function PaginateF() {
-    const allRecipes = useSelector((state) => state.recipes)
     const dispatch = useDispatch()
+    const allRecipes = useSelector((state) => state.recipes)
+
+    useEffect(() => {           
+        dispatch(getRecipes())
+    }, [dispatch])
 
     const [currentPage, setCurrentPage] = useState(1) // lo seteo en 1 porque siempre arranco en la primer pagina
     const [recipesPerPage] = useState(9)  //cuantas recetas quiero por pagina, por estado local
@@ -20,35 +24,32 @@ export default function PaginateF() {
         setCurrentPage(pageNumber)
     }
 
-    useEffect(() => {            //traigo las recetas cuando el componente se monta.
-        dispatch(getRecipes())
-    }, [dispatch])
-
     return (
         <div>
             <div>
-               <Paginate
-                key={1}
-                recipesPerPage={recipesPerPage}
-                allRecipes={allRecipes.length}   //porque necesito un valor numerico
-                paginado={paginado}
-            /> 
+                <PaginateF
+                    recipesPerPage={recipesPerPage}
+                    allRecipes={allRecipes.length}   //porque necesito un valor numerico
+                    paginado={paginado}
+                    currentPage={currentPage}
+                />
             </div>
-            
+
             <div >
-                {currentRecipes?.map((el) => {
-                    return (
-                        <Card img={el.image} name={el.name} diet={el.diets} id={el.id} key={el.id} />
-                    )
-                })
+                {
+                    currentRecipes?.map((el) => {
+                        return (
+                            <Card img={el.image} name={el.name} diet={el.diets} id={el.id} key={el.id} />
+                        )
+                    })
                 }
             </div>
 
-            <Paginate
-                key={1}
+            <PaginateF
                 recipesPerPage={recipesPerPage}
                 allRecipes={allRecipes.length}   //porque necesito un valor numerico
                 paginado={paginado}
+                currentPage={currentPage}
             />
 
         </div>

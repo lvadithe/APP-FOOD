@@ -10,8 +10,8 @@ function rootReducer(state = initialState, action) {
     case 'GET_RECIPES':
       return {
         ...state,
-        recipes: action.payload,     //en mi estado recipes, manda todo lo que envie la accion getrecipes
-        allRecipes: action.payload  // el estado que se siempre mantiene con todas las recetas
+        recipes: action.payload,    
+        allRecipes: action.payload  
       }
 
     case 'GET_NAME_RECIPES':
@@ -60,7 +60,7 @@ function rootReducer(state = initialState, action) {
     case 'FILTER_BY_NAME':
       let orderName = action.payload === "asc" ?
         state.recipes.sort(function (a, b) {     //sort-> compara y ordena izq o der d
-          if (a.name > b.name) return 1
+          if (a.name > b.name) return 1 /* pos 1 b */
           if (b.name > a.name) return -1
           return 0   //si son iguales
         }) :

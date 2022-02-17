@@ -46,6 +46,25 @@ const recipeId = async (req, res) => {
 
 };
 
+/* const recipeId = async (req, res) => {
+
+    try {
+
+        const id  = req.query.id
+        const recipeIds = await data.allData()
+
+        if (id) {
+            const recipeID = await recipeIds.filter(e => e.id == id)
+            recipeID.length ?
+                res.status(200).send(recipeID) :
+                res.status(404).send('No Recipe Found.')
+        }
+
+    } catch {
+        return res.status(400).send('Invalid input');
+    }
+
+}; */
 
 module.exports = {
     get,
