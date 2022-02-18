@@ -60,14 +60,16 @@ export default function RecipeCreate() {
         }));
     };
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        if (Object.values(errors).length > 0) alert("Por favor rellenar todos los campos")
-        else {
-            dispatch(postRecipe(post))
-            alert('¡Receta creada con éxito!')
-        }
-    };
+    function handleSteps(e) {
+        setPost({
+            ...post,
+            steps: [e.target.value]
+        });
+        setErrors(validate({
+            ...post,
+            steps: e.target.value
+        }));
+    }
 
     function handleSelectDiets(e) {
         if (!post.diets.includes(e.target.value))
@@ -81,17 +83,6 @@ export default function RecipeCreate() {
         }));
     };
 
-    function handleSteps(e) {
-        setPost({
-            ...post,
-            steps: [e.target.value]
-        });
-        setErrors(validate({
-            ...post,
-            steps: e.target.value
-        }));
-    }
-
     function handleDietDelete(diet) {
         setPost({
             ...post,
@@ -104,6 +95,15 @@ export default function RecipeCreate() {
 
     };
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (Object.values(errors).length > 0 || !post.name) alert("Por favor rellenar todos los campos")
+        else {
+            dispatch(postRecipe(post))
+            alert('¡Receta creada con éxito!')
+        }
+    };
+    
     return (
         <div className={s.container}>
             <div className={s.form} >
@@ -163,21 +163,21 @@ export default function RecipeCreate() {
                             }
                         </select>
                         {errors.diets && (
-                            <p style={{ float: 'right', display: "none" } }>{errors.diets}</p>
+                            <p style={{ float: 'right', display: "none" }}>{errors.diets}</p>
                         )}
-                        {post.diets.map(d =>
-                            <div key={d.id} className={s.divdiets}>
-                                <p className={s.selecteddiets}>{d}</p>
-                                <button onClick={() => handleDietDelete(d)}
-                                >X</button>
-                            </div>
-                        )}
+                        {
+                            post.diets.map(d =>
+                                <div key={d.id} className={s.divdiets}>
+                                    <p className={s.selecteddiets}>{d}</p>
+                                    <button type="button" onClick={() => handleDietDelete(d)}>X</button>
+                                </div>
+                            )}
                     </div>
                     <button type='submit' >¡Crear!</button>
                     <Link to='/home'>
                         <button>Volver</button>
                     </Link>
-                    
+
                 </form>
             </div>
         </div>

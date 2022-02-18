@@ -14,30 +14,6 @@ export function getRecipes() {
 
 };
 
-/* export function getRecipes() {
-
-  return  function (dispatch) {
-    fetch("http://localhost:3001/recipes")
-    .then(res => res.json()) 
-    .then(data => {
-      return dispatch({ type: 'GET_RECIPES', payload: data })
-    })  
-    
-  }
-
-}; */
-
-/* export function getRecipes() {
-
-  return  function (dispatch) {
-    axios.get("http://localhost:3001/recipes")
-    .then(res => dispatch({ type: 'GET_RECIPES', payload: res.data })) 
-    .catch(err => console.error(err)) 
-    
-  }
-
-}; */
-
 export function getDiets() {
 
   return async function (dispatch) {
@@ -106,16 +82,6 @@ export function getRecipeDetail(id) {
     ;
 }
 
-/* export function getRecipeDetail(id) {
-
-  return async function (dispatch) {
-    let json = await axios.get(`http://localhost:3001/recipes?${id}`);
-    return dispatch({ type: 'GET_DETAIL', payload: json.data })
-  }
-
-    ;
-}
- */
 export function getClean() {
 
   return {
